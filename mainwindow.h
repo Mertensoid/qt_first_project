@@ -7,6 +7,9 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QItemSelectionModel>
+#include <QModelIndexList>
+#include <QModelIndex>
 
 #include "datamodel.h"
 
@@ -25,8 +28,19 @@ class MainWindow : public QWidget
 
     DataModel *m_model;
 
+    QItemSelectionModel *selectionModel;
+    QModelIndexList indexes;
+    QModelIndex index;
+
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+public slots:
+    void insertValueFromLineEdit();
+    void findSelectionIndex();
+    void deleteSelectedItem();
+
+
 };
 #endif // WIDGET_H
